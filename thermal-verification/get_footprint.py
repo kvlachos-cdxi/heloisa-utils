@@ -94,7 +94,7 @@ def datetime_from_string(s):
 ############################# BEGIN #############################
 
 # Define path with images
-parent_dir = Path('/home/kostageo/Documents/CDXi/HELOISA/Data/ORORATECH/thermal-wildfire/ororatech_fire-danger-forecasting')
+parent_dir = Path('/media/kostageo/data/HELOISA/Inputs/Axis-1.1/ORORATECH/Forest-2_GR_082024')
 
 
 for subdir in parent_dir.iterdir():
