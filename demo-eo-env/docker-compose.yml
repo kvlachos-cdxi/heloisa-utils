@@ -1,4 +1,4 @@
-version: "3"
+# version: "3"
 services:
   dasktest:
     container_name: dasktest
@@ -14,31 +14,32 @@ services:
     ports:
       - "127.0.0.1:8888:8888"
     volumes:
-      - /home/freekostageo/Desktop/Productivity scripts/dask/data:/home/data
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-    depends_on:
-      - eo_mongodb
-  eo_mongodb:
-    container_name: eo_mongo
-    hostname: dasktest
-    image: mongo
-    volumes:
-      - mongoVolume:/data/db
-    restart: unless-stopped
-    stdin_open: false # equivalent to docker run -i
-    tty: false        # equivalent to docker run -t
-    ports:
-      - "127.0.0.1:27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-    command: --quiet
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "200k"
-        max-file: "10"
-volumes:
-  mongoVolume:
+      - ./data/:/home/data/
+      - ./notebooks/:/home/notebooks/
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+    #   MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    # depends_on:
+    #   - eo_mongodb
+  # eo_mongodb:
+  #   container_name: eo_mongo
+  #   hostname: dasktest
+  #   image: mongo
+  #   volumes:
+  #     - mongoVolume:/data/db
+  #   restart: unless-stopped
+  #   stdin_open: false # equivalent to docker run -i
+  #   tty: false        # equivalent to docker run -t
+  #   ports:
+  #     - "127.0.0.1:27017:27017"
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+  #   command: --quiet
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "200k"
+  #       max-file: "10"
+# volumes:
+#   mongoVolume:
