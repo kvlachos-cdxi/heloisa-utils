@@ -20,10 +20,10 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Upgrade pip inside the virtual environment
 RUN pip install --upgrade pip
 RUN pip install "dask[array]" xarray rioxarray jupyterlab matplotlib GDAL
+RUN pip install eo-learn scipy scikit-learn openpyxl astropy cfgrib rio-cogeo
 # scikit-image pillow
 # RUN pip install pymongo
 # RUN pip install imblearn rasterstats ipympl folium
-# RUN pip install eo-learn openpyxl
 RUN jupyter lab --generate-config
 COPY jupyter.py /root/.jupyter/jupyter_lab_config.py
 
