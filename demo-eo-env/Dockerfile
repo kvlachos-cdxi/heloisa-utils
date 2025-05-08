@@ -1,5 +1,4 @@
 FROM ghcr.io/osgeo/gdal:ubuntu-small-latest
-# FROM python:3.10-slim
 
 WORKDIR /home/
 # Set environment variables to avoid interactive prompts
@@ -20,12 +19,16 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Upgrade pip inside the virtual environment
 RUN pip install --upgrade pip
 RUN pip install "dask[array]" xarray rioxarray jupyterlab matplotlib GDAL
-RUN pip install eo-learn scipy scikit-learn openpyxl astropy cfgrib rio-cogeo
+RUN pip install eo-learn scipy scikit-learn openpyxl astropy cfgrib rio-cogeo eodag-labextension pystac
+
+RUN apt update && apt install nano
 # scikit-image pillow
 # RUN pip install pymongo
 # RUN pip install imblearn rasterstats ipympl folium
 RUN jupyter lab --generate-config
 COPY jupyter.py /root/.jupyter/jupyter_lab_config.py
+
+RUN
 
 #RUN cd /home/ && wget https://download.osgeo.org/proj/proj-8.0.0.tar.gz && tar -xf proj-8.0.0.tar.gz
 #RUN cd /home/proj-8.0.0 && mkdir build && cd build && cmake .. && cmake --build . && cmake --build . --target install
