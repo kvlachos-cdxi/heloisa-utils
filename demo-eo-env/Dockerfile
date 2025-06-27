@@ -19,7 +19,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Upgrade pip inside the virtual environment
 RUN pip install --upgrade pip
 RUN pip install "dask[array]" xarray rioxarray jupyterlab matplotlib GDAL
-RUN pip install eo-learn scipy scikit-learn openpyxl astropy cfgrib rio-cogeo eodag-labextension pystac stackstac
+RUN pip install eo-learn scipy scikit-learn openpyxl astropy cfgrib rio-cogeo eodag-labextension planetary-computer pystac scikit-image stackstac jinja2
 
 RUN apt update && apt install nano
 # scikit-image pillow
