@@ -28,7 +28,9 @@ RUN apt update && apt install nano
 RUN jupyter lab --generate-config
 COPY jupyter.py /root/.jupyter/jupyter_lab_config.py
 
-RUN
+RUN pip install omnicloudmask
+RUN pip install netCDF4 cftime
+RUN pip install pyresample
 
 #RUN cd /home/ && wget https://download.osgeo.org/proj/proj-8.0.0.tar.gz && tar -xf proj-8.0.0.tar.gz
 #RUN cd /home/proj-8.0.0 && mkdir build && cd build && cmake .. && cmake --build . && cmake --build . --target install
